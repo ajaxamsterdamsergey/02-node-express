@@ -1,0 +1,37 @@
+{
+  "name": "02-node-express",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ajaxamsterdamsergey/02-node-express.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ajaxamsterdamsergey/02-node-express/issues"
+  },
+  "homepage": "https://github.com/ajaxamsterdamsergey/02-node-express#readme",
+  "dependencies": {
+    "@hapi/joi": "^17.1.1",
+    "cors": "^2.8.5",
+    "esm": "^3.2.25",
+    "express": "^4.17.1",
+    "fs": "0.0.1-security",
+    "joi": "^14.3.1",
+    "mongodb": "^3.5.7",
+    "morgan": "^1.10.0",
+    "path": "^0.12.7",
+    "shortid": "^2.2.15",
+    "uuid": "^8.0.0",
+    "yargs": "^15.3.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
