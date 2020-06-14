@@ -1,5 +1,5 @@
 {
-  "name": "02-node-express",
+  "name": "03-mongodb",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,31 +10,26 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ajaxamsterdamsergey/02-node-express.git"
+    "url": "git+https://github.com/ajaxamsterdamsergey/03-mongodb.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ajaxamsterdamsergey/02-node-express/issues"
+    "url": "https://github.com/ajaxamsterdamsergey/03-mongodb/issues"
   },
-  "homepage": "https://github.com/ajaxamsterdamsergey/02-node-express#readme",
+  "homepage": "https://github.com/ajaxamsterdamsergey/03-mongodb#readme",
   "dependencies": {
     "@hapi/joi": "^17.1.1",
-    "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "esm": "^3.2.25",
     "express": "^4.17.1",
     "fs": "0.0.1-security",
     "joi": "^14.3.1",
-    "mongodb": "^3.5.7",
-    "mongoose": "^5.9.18",
-    "morgan": "^1.10.0",
+    "joi-objectid": "^3.0.1",
+    "mongodb": "^3.5.8",
+    "mongoose": "^5.9.17",
     "path": "^0.12.7",
-    "shortid": "^2.2.15",
-    "uuid": "^8.0.0",
-    "yargs": "^15.3.1"
+    "uuid": "^8.1.0"
   },
-  "devDependencies": {
-    "nodemon": "^2.0.4"
-  }
+  "devDependencies": {}
 }
