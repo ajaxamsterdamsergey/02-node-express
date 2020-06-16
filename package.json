@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node api/start.js",
-    "dev": "nodemon server.js"
+    "dev": "nodemon api/start.js"
   },
   "repository": {
     "type": "git",
@@ -20,16 +20,20 @@
   "homepage": "https://github.com/ajaxamsterdamsergey/03-mongodb#readme",
   "dependencies": {
     "@hapi/joi": "^17.1.1",
+    "bcryptjs": "^2.4.3",
     "dotenv": "^8.2.0",
     "esm": "^3.2.25",
     "express": "^4.17.1",
     "fs": "0.0.1-security",
     "joi": "^14.3.1",
     "joi-objectid": "^3.0.1",
+    "jsonwebtoken": "^8.5.1",
     "mongodb": "^3.5.8",
     "mongoose": "^5.9.17",
     "path": "^0.12.7",
     "uuid": "^8.1.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
 }

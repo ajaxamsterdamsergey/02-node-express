@@ -9,7 +9,7 @@ async function api(){
   console.log("Database connection successful")
   const db=client.db(DB_NAME)
   const contacts=db.collection("contacts") */
-  /* await contacts.insertMany([
+/* await contacts.insertMany([
     {"name":"Allen Raymond","email":"nulla.ante@vestibul.co.uk","phone":"(992) 914-3792","subscription":"free","password":"password","token":""},
 {"name":"Chaim Lewis","email":"dui.in@egetlacus.ca","phone":"(294) 840-6685","subscription":"pro","password":"password","token":""},
 {"name":"Kennedy Lane","email":"mattis.Cras@nonenimMauris.net","phone":"(542) 451-7038","subscription":"free","password":"password","token":""},
@@ -22,7 +22,7 @@ async function api(){
 {"name":"Alec Howard","email":"Donec.elementum@scelerisquescelerisquedui.net","phone":"(748) 206-2688","subscription":"premium","password":"password","token":""}
 
   ]) */
- /*  console.log(await contacts.find({"name":"Chaim Lewis"}).toArray())
+/*  console.log(await contacts.find({"name":"Chaim Lewis"}).toArray())
 }
 api() */
 /* const PORT = 3000;
