@@ -1,5 +1,8 @@
+require = require("esm")(module);
 const express = require("express");
 const mongoose = require("mongoose");
+const authRouter = require("./auth/auth.router");
+/* import authRouter from "./auth/auth.router"; */
 const contactsRouter = require("./contacts/contact.router");
 require("dotenv").config();
 /* const PORT = 3005 */
@@ -27,6 +30,7 @@ module.exports = class ContactsServer {
     this.server.use(express.json());
   }
   initRoutes() {
+    this.server.use("/auth", authRouter);
     this.server.use("/api/contacts", contactsRouter);
   }
 

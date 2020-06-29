@@ -3,12 +3,22 @@ const { Schema } = mongoose;
 
 const contactSchema = new Schema({
   /* _id: Schema.Types.ObjectId, */
-  name: { type: String, required: true },
+  /* name: { type: String, required: true },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   phone: { type: String, required: true },
   subscription: { type: String, required: true },
-  token: { type: String, required: false },
+  token: { type: String, required: false }, */
+  name: String,
+  email: String,
+  password: String,
+  role: String,
+  subscription: {
+    type: String,
+    enum: ["free", "pro", "premium"],
+    default: "free",
+  },
+  token: String,
 });
 
 contactSchema.statics.createContact = createContact;
@@ -18,6 +28,11 @@ contactSchema.statics.getContactById = getContactById;
 contactSchema.statics.deleteContact = deleteContact;
 contactSchema.statics.findContactByEmail = findContactByEmail;
 contactSchema.statics.updateToken = updateToken;
+contactSchema.static.getUser = getUser;
+
+async function getUser(query) {
+  return this.user.findOne(query);
+}
 
 async function createContact(contactParams) {
   return this.create(contactParams);

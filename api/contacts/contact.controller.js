@@ -2,15 +2,27 @@ const Joi = require("joi");
 const contactModel = require("./contact.model");
 const bcryptjs = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const { UnauthorizedError } = require("../helpers/errors.constuctor");
 const {
   Types: { ObjectId },
 } = require("mongoose");
+const _ = require("lodash");
+const { json } = require("express");
 class ContactController {
   constructor() {
     this._costFactor = 4;
   }
   get createContacts() {
     return this._createContacts.bind(this);
+  }
+  get getContactsById() {
+    return this._getContactsById.bind(this);
+  }
+  get getContacts() {
+    return this._getContacts.bind(this);
+  }
+  get getCurrentContact() {
+    return this._getCurrentContact.bind(this);
   }
   async _createContacts(req, res, next) {
     try {
@@ -55,30 +67,37 @@ class ContactController {
       if (!isPasswordValid) {
         return res.status(403).send("Authentication failed");
       }
-      const token = await jwt.sign({ id: contact._id }, "oigfdytf");
+      const token = await jwt.sign(
+        { id: contact._id },
+        process.env.JWT_SECRET,
+        { expiresIn: 2 * 24 * 60 * 60 }
+      );
       await contactModel.updateToken(contact._id, token);
       return res.status(200).json({ token });
     } catch (err) {
       next(err);
     }
   }
-  async getContacts(req, res, next) {
+  async _getContacts(req, res, next) {
     try {
-      /* const users = await userModel.find() */
-      return res.status(200).json(await contactModel.getAllContacts());
+      const contacts = await contactModel.find();
+      /* return res.status(200).json(await contactModel.getAllContacts()); */
+      return res.status(200).json(this.prepareContactsResponse(contacts));
     } catch (err) {
       next(err);
     }
   }
-  async getContactsById(req, res, next) {
+  async _getContactsById(req, res, next) {
     try {
-      const userId = req.params.id;
+      const contactId = req.params.id;
 
-      const contact = await contactModel.getContactById(req.params.id);
+      /* const contact = await contactModel.getContactById(req.params.id); */
+      const contact = await contactModel.findById(contactId);
       if (!contact) {
         return res.status(404).send();
       }
-      return res.status(200).json(contact);
+      const [contactForResponse] = this.prepareContactsResponse([contact]);
+      return res.status(200).json(contactForResponse);
     } catch (err) {
       next(err);
     }
@@ -109,6 +128,52 @@ class ContactController {
         return res.status(404).send();
       }
       return res.status(204).send();
+    } catch (err) {
+      next(err);
+    }
+  }
+  async logout(req, res, next) {
+    try {
+      const contact = req.contact;
+      await contactModel.updateToken(contact._id, null);
+      return res.status(204).send();
+    } catch (err) {
+      next(err);
+    }
+  }
+  async _getCurrentContact(req, res, next) {
+    const [contactForResponse] = this.prepareContactsResponse([req.contact]);
+    return res.status(200).json(contactForResponse);
+  }
+  async authorize(req, res, next) {
+    try {
+      // 1. витягнути токен користувача з заголовка Authorization
+      const authorizationHeader = req.get("Authorization");
+      const token = authorizationHeader.replace("Bearer ", "");
+
+      // 2. витягнути id користувача з пейлоада або вернути користувачу
+      // помилку зі статус кодом 401
+      let conactId;
+      try {
+        conactId = await jwt.verify(token, process.env.JWT_SECRET).id;
+      } catch (err) {
+        next(new UnauthorizedError("User not authorized"));
+      }
+
+      // 3. витягнути відповідного користувача. Якщо такого немає - викинути
+      // помилку зі статус кодом 401
+      // userModel - модель користувача в нашій системі
+      const contact = await contactModel.findById(conactId);
+      if (!contact || contact.token !== token) {
+        throw new UnauthorizedError("user not authorized");
+      }
+
+      // 4. Якщо все пройшло успішно - передати запис користувача і токен в req
+      // і передати обробку запиту на наступний middleware
+      req.contact = contact;
+      req.token = token;
+
+      next();
     } catch (err) {
       next(err);
     }
@@ -168,6 +233,12 @@ class ContactController {
     }
 
     next();
+  }
+  prepareContactsResponse(contacts) {
+    return contacts.map((contact) => {
+      const { name, email, phone, subscription, _id } = contact;
+      return { id: _id, name, email, phone, subscription };
+    });
   }
 }
 
