@@ -4,6 +4,7 @@ import {
   tokenMiddleware,
   roleMiddleware,
 } from "../middlewares/auth.middleware";
+const { avatarUploader } = require("../middlewares/fileUploader.middleware");
 
 const contactsRouter = Router();
 
@@ -34,6 +35,14 @@ contactsRouter.get(
   /* roleMiddleware(["USER", "ADMIN"]), */
   contactController.validateId,
   contactController.getContactsById
+);
+contactsRouter.post(
+  "/uploadAvatar",
+  tokenMiddleware,
+  /* roleMiddleware(["USER", "ADMIN"]), */
+  contactController.validateCreateUser,
+  avatarUploader().single("avatar"),
+  contactController.uploadAvatarController
 );
 contactsRouter.put(
   "/sign-in",

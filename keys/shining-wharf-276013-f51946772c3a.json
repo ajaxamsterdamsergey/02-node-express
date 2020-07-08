@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "shining-wharf-276013",
+  "private_key_id": "f51946772c3a8755f383fd3aba5392475dc13fdf",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCHUQNX6raJ7yJ0\nQgztK2z5h5Elorhg1iNPLi8rJeDZ89wOcQz7K03wZFzvD/REhUhDeXa2eR61nq09\ntUwog7hq8AwxnWpSlVYvzU2qlVocKUDIXnQWUdGNFcngiyKpTVG70Okufg7JKYcO\nnH6k0JaxPr6zrQ11f6MoJ9cWIxFAxEv1HHEVdq/SuPQUNpBDZcX4/e6l6mIAbGT+\nQIvrTFoftQppWHoEoLeDKjNofzpctEFnfbvxQHZsVrtrXVwk3+PeEClb+DnEpk6t\nlm3DxitgRzM4gNNmWyuwWNRexLQcpZXnVa1o3RtnqLTt5upTkuV8qljnrI+qke5e\ngh3l0JmPAgMBAAECggEAFkIBJsj41Z98L1td/PUTq8fc3C/z3BndHP0fzR0h6zft\njoKR/A6Xd19K2hfpuguiY1brbABoSL+dB3V23YMtJontt4uJHaRq1NoUWGbQt6kh\netPujG1Q5sAawNCiFu8c7qPidz9M91HZYVHkkv+sieMkQzHH8PfZwpUrD/0crWZf\nTUUADta526i57ezByyQKPBEU1f3FPObhUJpCVxlt8+pZAP4UlR8T2SWXMLs1plVW\nepTzNm2ZuVPJGxQf4754sTkWC4OuOQT32Xrk3Pv8y4S6yZzJByWVxHgf5ekbUkdl\nJIqzGHiy5bu/ICrvExn7I0LdDU2LxQdTugn80Mr8YQKBgQC6Q9Ns6yku5++tchj5\nEoUAnZcxj2Jm8tdz62haNtB0AJdIVKRtSE7dqwa2d73FVCz5eWi7D6eI6LmANj3T\nM1Ysqja+hqIhXSCvzD+23WEJNXAwd9suSPU7Fr/Mc3g9QYRTkYKZaeixflfVj+iJ\n8fo94NXG0tFzoh07wRAe3WKoNQKBgQC5+iLMaNXkym2Sd8fqZ702NBdmYi1IaDM9\nFBbpw8hvuy3KK7Z7azSqcEeTlo1w0SxCtRnmfRPv6hLFos7pjVyVrZXNIm2ETBa+\n7c/2Qv2ldM0sBJNYFDeQCmbd+tpyN00omCG9Ma9GhF97Dxo6DTgvmx4uVlZ6G5II\nK1IbRi2bMwKBgQChkdQD1riSh33P5fjjlLzqG8japJWm118snjaWipWnChwwEbvP\nT7mZbpEUFin20V1xyW6fVKTujXDbVjGq0g0eEUgLXJ2mczG3TGS4Kq/RXRlD8bOe\nIosWBlW48zCJchtmogG3Mbc2v3FRPtNnVQ7MPgsxvA0TULwq6P0iyMabQQKBgGYO\neiIqNZaD73U8/hwIKbEhDOZGYgsmA1g1Og22Prvxv8L+EfnQbupJCz5Wk++hGeTR\ndREi+lnh3cNPALTxuij5RQd5KRg8mQ7VehXt1TuCyUSqjiD7lzIYQzL1ggLDjjgE\npB8qsMDFy4/ATeglcPvO59UN1A7WKmEJRNlqvYQ5AoGAfzOys7LzVBytOcJdMf4k\nYkq/cku5vImmnPwU8er2fZh1nrjaEpcd1mPv0pnuSg+4ToBryMYdaYsqBPXYIrIs\ndSRFdjB3cohvmtXpRHi/hpKGgIaIaic3WStJcfU+ChyzMH4W+lfI4tV1HXlA4vi6\nb3PYb5/riBekG8YTGTBquQY=\n-----END PRIVATE KEY-----\n",
+  "client_email": "goit-node-js@shining-wharf-276013.iam.gserviceaccount.com",
+  "client_id": "115343091352674935865",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/goit-node-js%40shining-wharf-276013.iam.gserviceaccount.com"
+}

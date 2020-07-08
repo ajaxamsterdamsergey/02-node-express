@@ -28,8 +28,10 @@ module.exports = class ContactsServer {
   initMiddlewares() {
     /* this.server.use(express.urlencoded()); */
     this.server.use(express.json());
+    
   }
   initRoutes() {
+    this.server.use('/files',express.static('files'))
     this.server.use("/auth", authRouter);
     this.server.use("/api/contacts", contactsRouter);
   }

@@ -8,6 +8,7 @@ const {
 } = require("mongoose");
 const _ = require("lodash");
 const { json } = require("express");
+import { uploadAvatarFileToStorage } from "../services/uploadAvatar.service";
 class ContactController {
   constructor() {
     this._costFactor = 4;
@@ -82,6 +83,7 @@ class ContactController {
     try {
       const contacts = await contactModel.find();
       /* return res.status(200).json(await contactModel.getAllContacts()); */
+
       return res.status(200).json(this.prepareContactsResponse(contacts));
     } catch (err) {
       next(err);
@@ -128,6 +130,29 @@ class ContactController {
         return res.status(404).send();
       }
       return res.status(204).send();
+    } catch (err) {
+      next(err);
+    }
+  }
+  async uploadAvatarController(req, res, next) {
+    try {
+      const { path } = req.file;
+      const data = { _id: req.userInfo.id, avatar: path }; 
+      const user = await contactModel.updateContact(data);
+      res.json(user)
+      /* console.log(req.file); */
+      /* const filePath = await uploadAvatarFileToStorage(req.file.path);
+      const user = await contactModel.updateContact({
+        _id: req.userInfo.id,
+        avatar: filePath,
+      }); */
+
+      /* res.json(user); */
+      /* res.send("Poto or"); */
+      /* const { path } = req.file;
+      const data = { _id: req.userInfo.id, avatar: path };
+      const user = await contactModel.updateContact(data);
+      res.json(user); */
     } catch (err) {
       next(err);
     }
