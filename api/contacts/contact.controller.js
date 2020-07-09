@@ -136,23 +136,17 @@ class ContactController {
   }
   async uploadAvatarController(req, res, next) {
     try {
-      const { path } = req.file;
-      const data = { _id: req.userInfo.id, avatar: path }; 
+     /*  const data = { _id: req.userInfo.id, avatar: req.file.path };
       const user = await contactModel.updateContact(data);
-      res.json(user)
-      /* console.log(req.file); */
-      /* const filePath = await uploadAvatarFileToStorage(req.file.path);
+      res.json(user);
+      console.log(req.file); */
+    
+      const filePath = await uploadAvatarFileToStorage(req.file.path);
       const user = await contactModel.updateContact({
         _id: req.userInfo.id,
         avatar: filePath,
-      }); */
-
-      /* res.json(user); */
-      /* res.send("Poto or"); */
-      /* const { path } = req.file;
-      const data = { _id: req.userInfo.id, avatar: path };
-      const user = await contactModel.updateContact(data);
-      res.json(user); */
+      });
+      res.json(user);
     } catch (err) {
       next(err);
     }
